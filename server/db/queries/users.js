@@ -22,11 +22,11 @@ const fetchAllUsers = async (req, res, next) => {
         );
         res.json({
             users,
-            mesasge: 'users retrived...'
+            message: 'users retrived...'
         })
     } catch (err) {
         next(err);
     }
 }
 
-module.exports = { createUser, fetchAllUsers }
+module.exports = { createUser, fetchAllUsers };
