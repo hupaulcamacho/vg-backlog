@@ -17,6 +17,12 @@ app.use(bodyParser.json());
 app.use('/api/users', userRouter);
 app.use('/api/games', gameRouter);
 
+app.use('/api/login', (req, res) => {
+    res.send({
+        token: 'testToken'
+    })
+})
+
 app.use((err, req, res, next) => {
     console.log(err);
     if(err.status) {
