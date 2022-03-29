@@ -28,4 +28,18 @@ const fetchGameById = async (req, res, next) => {
     }
 }
 
-module.exports = { fetchAllGames, fetchGameById };
+const fetchGamesByPlatform = async (req, res, next) => {
+    try {
+        const games = await db.any(
+            'SELECT * FROM games WHERE platform = $1', [ req.params.platform ]
+        );
+        res.json({
+            games,
+            message: 'games retrieved by platform...'
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+
+module.exports = { fetchAllGames, fetchGameById, fetchGamesByPlatform };
